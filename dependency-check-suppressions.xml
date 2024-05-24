@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+    <!--
+        OWASP Dependency Check Suppressions
+
+        This file contains suppressions for false positives in dependency scanning.
+        Only add suppressions after careful review and documentation.
+
+        Each suppression should include:
+        - Clear reason for suppression
+        - Link to CVE/issue tracker
+        - Review date and owner
+        - Expiration date if temporary
+    -->
+
+    <!-- Example suppression (remove if not needed):
+    <suppress>
+        <notes><![CDATA[
+            False positive - this vulnerability does not affect our usage
+            Review date: 2024-11-02
+            Owner: DevOps Team
+        ]]></notes>
+        <cve>CVE-XXXX-XXXXX</cve>
+    </suppress>
+    -->
+
+</suppressions>

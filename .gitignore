@@ -19,5 +19,23 @@
 *.tar.gz
 *.rar
 
+# Exception: Include Gradle wrapper JAR (required for build)
+!gradle/wrapper/gradle-wrapper.jar
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+.DS_Store
+
+# IDE-specific files (tracked but individual workspace settings may vary)
+.vscode/
+*.iml
+
+# Gradle build artifacts
+build/
+.gradle/
+out/
+
+# Temporary verification files
+*_verification.txt
+*_verification.log

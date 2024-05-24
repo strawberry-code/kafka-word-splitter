@@ -121,16 +121,14 @@ cd kafka-word-splitter
 ./scripts/create-topics.sh
 
 # 5. Run the consumer (in one terminal)
-java -cp build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar org.example.ConsumerApp 3 output-3.txt
+java -jar build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar org.example.ConsumerApp 3 output-3.txt
 
 # 6. Run the producer (in another terminal)
-java -cp build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar org.example.ProducerApp /path/to/watch
+java -jar build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar org.example.ProducerApp /path/to/watch
 
 # 7. Add a text file to the watch directory and see the magic!
 echo "hello world from kafka" > /path/to/watch/test.txt
 ```
-
-**Note:** This project uses `java -cp` (classpath) instead of `java -jar` to run applications. This allows running both `ProducerApp` and `ConsumerApp` from the same JAR file by specifying the main class explicitly on the command line.
 
 For a more detailed guide, see [docs/getting-started/QUICK_START.md](docs/getting-started/QUICK_START.md).
 
@@ -181,7 +179,7 @@ The producer monitors a directory and sends words to Kafka:
 
 ```bash
 # Using the fat JAR
-java -cp build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
+java -jar build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
   org.example.ProducerApp /path/to/watch/directory
 
 # Using Gradle
@@ -194,12 +192,12 @@ The consumer reads from a specific topic and writes to a file:
 
 ```bash
 # Subscribe to topic "3" (3-letter words)
-java -cp build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
+java -jar build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
   org.example.ConsumerApp 3 output-3.txt
 
 # Run multiple consumers for different word lengths
 for i in {3..10}; do
-  java -cp build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
+  java -jar build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
     org.example.ConsumerApp "$i" "output-$i.txt" &
 done
 ```
@@ -279,20 +277,20 @@ Start one or more consumers to receive words of specific lengths:
 
 ```bash
 # Example 1: Single consumer for 5-letter words
-java -cp build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
+java -jar build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
   org.example.ConsumerApp 5 output-5.txt
 
 # Example 2: Multiple consumers for different word lengths
 # Terminal 1: 3-letter words
-java -cp build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
+java -jar build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
   org.example.ConsumerApp 3 output-3.txt
 
 # Terminal 2: 4-letter words
-java -cp build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
+java -jar build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
   org.example.ConsumerApp 4 output-4.txt
 
 # Terminal 3: 5-letter words
-java -cp build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
+java -jar build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
   org.example.ConsumerApp 5 output-5.txt
 ```
 
@@ -307,7 +305,7 @@ INFO  Subscribed to topic: 5
 In a new terminal, start the producer:
 
 ```bash
-java -cp build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
+java -jar build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
   org.example.ProducerApp /tmp/kafka-watch
 ```
 
@@ -410,7 +408,7 @@ Run consumers for all supported word lengths in separate terminals or background
 ```bash
 # Start all consumers (run each in separate terminal or use & for background)
 for i in {3..10}; do
-  java -cp build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
+  java -jar build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
     org.example.ConsumerApp "$i" "output-$i.txt" &
 done
 
@@ -583,7 +581,7 @@ mkdir -p /tmp/kafka-watch
 mkdir -p output
 
 # Then restart consumer with:
-java -cp build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
+java -jar build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
   org.example.ConsumerApp 5 output/file.txt
 ```
 
@@ -644,11 +642,11 @@ Here's a complete testing session from start to finish:
 # Terminal 2: Build and start consumer for 5-letter words
 ./gradlew clean build
 mkdir -p /tmp/kafka-watch
-java -cp build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
+java -jar build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
   org.example.ConsumerApp 5 output-5.txt
 
 # Terminal 3: Start producer
-java -cp build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
+java -jar build/libs/kafka-word-splitter-1.0-SNAPSHOT-all.jar \
   org.example.ProducerApp /tmp/kafka-watch
 
 # Terminal 4: Add test file
@@ -911,7 +909,7 @@ See [SUPPORT.md](SUPPORT.md) for more information.
 - Gradle team for the build system
 - All contributors to this project
 
-## Author
+## Authors
 
 - Coordinator: strawberry-code
 
